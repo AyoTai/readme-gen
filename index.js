@@ -33,7 +33,8 @@ const questions = [
     {
         type: 'list',
         name: 'license',
-        message: ['MIT', 'Apache-2.0', 'GPL-3.0', 'ISC', 'No License']
+        message: 'Please choose which license your project uses',
+        choices: ['MIT License', 'Apache-2.0', 'GPL-3.0', 'ISC', 'No License']
     },
     {
         type: 'input',
@@ -48,7 +49,20 @@ const questions = [
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+const writeToFile = (fileName, data) =>{
+    return new Promise((rej, res) =>{
+        fs.writeFile('../files/README.md', (fileName, data), err =>{
+            if(err){
+                rej(err);
+                return;
+            }
+            res({
+                yes: true,
+                message: "Success! File has been created."
+            });
+        })
+    })
+}
 
 // TODO: Create a function to initialize app
 function init() {}
