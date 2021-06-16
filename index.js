@@ -13,7 +13,7 @@ const questions = [
     {
         type: 'input',
         name: 'projectDescription',
-        message: 'Please enter a dexcription of your project'
+        message: 'Please enter a description of your project'
     },
     {
         type: 'input',
@@ -65,7 +65,16 @@ const writeToFile = (fileName, data) =>{
 }
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+    return inquirer.prompt(questions);
+}
 
 // Function call to initialize app
-init();
+init()
+.then(data => {
+    console.log(data)
+    return generateMarkdown(data);
+})
+.then(data => {
+    return writeToFile('README.md',data)
+})
