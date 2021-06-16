@@ -51,7 +51,7 @@ const questions = [
 // TODO: Create a function to write README file
 const writeToFile = (fileName, data) =>{
     return new Promise((rej, res) =>{
-        fs.writeFile('../files/README.md', (fileName, data), err =>{
+        fs.writeFile('./files/README.md', (fileName, data), err =>{
             if(err){
                 rej(err);
                 return;
